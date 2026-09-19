@@ -296,9 +296,25 @@ npm start
 🌐 Runs on:
 http://localhost:3000
 
+
+---
+
+## 🔐 Default Login Credentials
+
+The system features Role-Based Access Control (RBAC). Higher-level roles require a designated prefix before their password to verify their access level.
+
+| Role | Username | Password (with prefix) |
+|---|---|---|
+| **Admin** | `admin` | `ADMIN_admin123` |
+| **Underwriter** | `underwriter` | `UW_uw2024` |
+| **Loan Officer** | `officer` | `lo2024` (No prefix needed) |
+
+*Note: Any newly registered accounts via the "Create an account" page default to the **Loan Officer** role and do not require a prefix.*
+
 ---
 
 ## 🔌 API Endpoints
+
 
 | Method | Endpoint   | Description              |
 | ------ | ---------- | ------------------------ |
