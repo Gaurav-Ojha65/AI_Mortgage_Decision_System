@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
 
 # 🏦 AI Mortgage Decision System
 
@@ -23,9 +23,9 @@
 | Layer | Status | URL |
 |---|---|---|
 | **Frontend** | ✅ Live on Vercel | [ai-mortgage-decision-system-pied.vercel.app](https://ai-mortgage-decision-system-pied.vercel.app) |
-| **Backend** | ⏳ Local / Pending public deployment | `http://localhost:8001` |
+| **Backend** | ✅ Live on Render | [mortgage-backend-st6p.onrender.com](https://mortgage-backend-st6p.onrender.com) |
 
-> **Note:** The live Vercel frontend is publicly accessible. API-backed features (risk prediction, SHAP, history) require the FastAPI backend to be running locally or deployed to a public host. The frontend will show connection errors for API calls when the backend is not reachable.
+> **Note:** The backend uses an ephemeral SQLite database for demo purposes, so historical data may reset between Render container spins.
 
 ---
 
@@ -262,8 +262,8 @@ Metrics from `ml/models/comparison_report.json` (verified directly from reposito
 
 ## 🔌 API Documentation
 
-Base URL (local): `http://localhost:8001`  
-Interactive docs: `http://localhost:8001/docs`
+Base URL (Production): `https://mortgage-backend-st6p.onrender.com`  
+Interactive docs (Swagger): `https://mortgage-backend-st6p.onrender.com/docs`
 
 | Method | Endpoint | Auth | Description |
 |---|---|---|---|
@@ -380,8 +380,10 @@ npm run dev
 
 Deployed from the `frontend/` directory. Set `VITE_API_URL=https://<your-backend>` in Vercel environment settings before API features will work for external users.
 
-### Backend — ⏳ Pending Public Deployment
-The FastAPI backend runs locally on port 8001. Deployment options include Render, Railway, or Docker (see `docker/` and `docker-compose.yml`). Once deployed, update `VITE_API_URL` in Vercel and redeploy the frontend.
+### Backend — ✅ Live on Render
+**[https://mortgage-backend-st6p.onrender.com/docs](https://mortgage-backend-st6p.onrender.com/docs)**
+
+The FastAPI backend is deployed on Render via Docker. The frontend uses the `VITE_API_URL` environment variable to connect to this live backend securely.
 
 ---
 
@@ -438,14 +440,14 @@ AI_Mortgage_Decision_System/
 4. **Local SQLite is not suitable for distributed production.** Multi-writer access requires PostgreSQL or equivalent.
 5. **In-memory session storage** means all sessions are lost on server restart.
 6. **The `ADMIN_`/`UW_` prefix is a demo-grade mechanism**, not a production security control.
-7. **Backend is not yet publicly deployed.** The live Vercel frontend cannot reach API-backed features without a public backend URL.
+7. **Demo Credentials.** The application relies on the default usernames (`admin`, `underwriter`, `officer`) for demonstration. Do not use for real sensitive data.
 
 ---
 
 ## 🗺️ Roadmap
 
-- [ ] Deploy backend to Render / Railway for full end-to-end live demo
-- [ ] Configure `VITE_API_URL` in Vercel for public API connectivity
+- [x] Deploy backend to Render / Railway for full end-to-end live demo
+- [x] Configure `VITE_API_URL` in Vercel for public API connectivity
 - [ ] Persistent session token storage (Redis / PostgreSQL)
 - [ ] PostgreSQL production database migration
 - [ ] CI/CD pipeline (GitHub Actions: lint, test, deploy)

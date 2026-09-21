@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useRef } from "react";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
+import { API_BASE as API_URL } from "../api";
 
 // =============================================================================
 // Styles - Matching existing dark theme
