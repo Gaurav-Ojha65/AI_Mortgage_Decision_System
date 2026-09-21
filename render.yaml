@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: mortgage-backend
+    env: docker
+    dockerfilePath: ./Dockerfile
+    region: ohio
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 10000
